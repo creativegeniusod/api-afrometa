@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os
+from dotenv import load_dotenv
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,15 +28,14 @@ SECRET_KEY = '-00@fhk)+tbq@kudk1@zuuig&^f)o$yd^04!b8dfd&5_bqc(6te'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '54.219.27.205', 'www.afrometa.com', 'api.afrometa.co', 'chrome-extension://imfcjlklfdieboglaledckjdemiifdko', 'afrometa.com', 'www.afrometa.io', 'afrometa.io', 'api.afrometa.co:8000']
+ALLOWED_HOSTS = ['127.0.0.1', '54.219.27.205', 'www.afrometa.com', 'api.afrometa.co', 'chrome-extension://imfcjlklfdieboglaledckjdemiifdko', 'afrometa.com', 'www.afrometa.io', 'afrometa.io']
 CORS_ORIGIN_ALLOW_ALL = False
 
 CORS_ORIGIN_WHITELIST = (
     'https://www.afrometa.com',
     'https://afrometa.com',
     'https://www.afrometa.io',
-    'https://afrometa.io',
-    'http://54.219.27.205:8000'
+    'https://afrometa.io'
 )
 
 # Application definition
@@ -98,16 +99,13 @@ WSGI_APPLICATION = 'chat_admin.wsgi.application'
 DATABASES = {
       'default': {
           'ENGINE': 'djongo',
-          'NAME': 'afrometa',
+          'NAME': os.environ.get('DB_NAME'),
           'CLIENT': {
-              'host': '127.0.0.1',
-              'port': 27017,
-              # 'username': 'adminodz',
-              # 'password': 'Ygyyrty4534',
-              # 'authSource': 'admin',
-              'username': 'afrometa_user',
-              'password': 'ourdesignz',
-              'authSource': 'afrometa',
+              'host': os.environ.get('DB_HOST'),
+              'port': int(os.environ.get('DB_PORT')),
+              'username': os.environ.get('DB_UN'),
+              'password': os.environ.get('DB_PWD'),
+              'authSource': os.environ.get('DB_NAME'),
               'authMechanism': 'SCRAM-SHA-1'
           },
       }
