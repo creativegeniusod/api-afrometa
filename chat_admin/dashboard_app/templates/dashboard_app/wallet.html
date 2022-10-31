@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Users{% endblock title %}
+
+{% block header %}
+	{% include "dashboard_app/layouts/top_bar.html" %}
+{% endblock header %}
+
+{% block sidebar %}
+	{% include "dashboard_app/layouts/sidebar_left.html" %}
+{% endblock sidebar %}
+
+{% block content %} 
+	<!-- partial -->
+	<div class="main-panel">
+		<div class="content-wrapper">
+
+			<!-- content top row -->
+			<div class="row">
+				<div class="col-md-12 grid-margin">
+					<div class="d-flex justify-content-between flex-wrap">
+						<div class="d-flex align-items-end flex-wrap">
+							<div class="mr-md-3 mr-xl-5">
+								<h2>Wallet Login Settings</h2>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+			<!-- Menu -->
+			<table class="table mb-5">
+				<thead>
+				  <tr>
+					<th scope="col"></th>
+					<th scope="col"></th>
+					<th scope="col"></th>
+				  </tr>
+				</thead>
+				<tbody>
+				  <tr>
+					<td class="text-end "><span class="fs-6">Current Status :</span></td>
+					<td ><span id="wallet-active-status" class="text-primary fs-6">...</span></td>
+					<td >
+						<button id="set-default" class="btn btn-primary btn-sm mr-2">Set Default</button>
+						<button id="set-nft" class="btn btn-warning btn-sm mr-2">Set NFT</button>
+						<button id="set-disabled" class="btn btn-danger btn-sm mr-2">Set Disabled</button>
+					
+					</td>			 
+				 </tr>
+				</tbody>
+			  </table>
+			  <div class="mr-md-3 mr-xl-5">
+				<h2>NFT Whitelist</h2>
+				<div class="d-flex justify-content-between">
+					<i class="text-secondary">(Only works if status is 'nft')</i>
+					<div class="input-group mb-3 w-50">
+						<button onclick="addNFT()" class="btn btn-outline-secondary" type="button" id="button-addon1">Add +</button>
+						<input id="nft-input" type="text" class="form-control" placeholder="NFT Contract Address (0x...)">
+					  </div>
+				</div>
+
+			</div> 
+			  <table id="nft-table"  class="table">
+				<tbody id="nft-table-tbody">
+				 
+				</tbody>
+			  </table>
+
+
+			<!--  -->
+		</div>
+	</div>
+{% endblock content %}
+
+{% block page_javascript %}
+	<script src="{% static 'dashboard_app/js/users_template.js' %}"></script>
+	<script src="{% static 'dashboard_app/js/wallet.js' %}"></script>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+{% endblock page_javascript %}

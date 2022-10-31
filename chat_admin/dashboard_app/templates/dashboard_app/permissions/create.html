@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Permissions{% endblock title %}
+
+{% block header %}
+	{% include "dashboard_app/layouts/top_bar.html" %}
+{% endblock header %}
+
+{% block sidebar %}
+	{% include "dashboard_app/layouts/sidebar_left.html" %}
+{% endblock sidebar %}
+
+{% block content %}
+	<div class="content-wrapper d-flex align-items-left auth px-0">
+		<div class="row w-100 mx-0">
+			<div class="col-lg-4 mx-auto">
+				<div class="auth-form-light text-left py-5 px-4 px-sm-5">
+					<div class="brand-logo">
+						<img src="{% static 'dashboard_app/images/logo.svg' %}" alt="logo">
+					</div>
+					<h4>Hello! create new here</h4>
+					
+					<form method="POST" action="{% url 'user_permission_create' %}" class="pt-3">
+						{% csrf_token %}
+						<div class="form-group">
+							<input type="text" name="permission" class="form-control form-control-lg" id="permission_name" placeholder="Permission Name">
+						</div>
+						<div class="mt-3">
+							<button type="submit" class="login btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">Create</button>
+						</div>
+						
+						<div class="text-center mt-4 font-weight-light">
+							<a href="{% url 'user_permissions' %}" class="text-primary">All Permissions</a>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock content %}

@@ -1,0 +1,43 @@
+{% load static %}
+
+<nav class="sidebar sidebar-offcanvas" id="sidebar">
+	<ul class="nav">
+		<li class="nav-item menu-users ">
+			<a class="nav-link" href="{% url 'users' %}">
+				<i class="mdi mdi-account-multiple-outline menu-icon"></i>
+				<span class="menu-title">Users</span>
+			</a>
+		</li>
+		<li class="nav-item menu-rooms">
+			<a class="nav-link" href="{% url 'list_rooms' %}">
+				<i class="mdi mdi-image-filter-none menu-icon"></i>
+				<span class="menu-title">User Rooms</span>
+			</a>
+		</li>
+		<li class="nav-item menu-permissions">
+			<a class="nav-link" href="{% url 'user_permissions' %}">
+				<i class="mdi mdi-lock-open menu-icon"></i>
+				<span class="menu-title">Permissions</span>
+			</a>
+		</li>
+		<li class="nav-item menu-votes">
+			<a class="nav-link" href="{% url 'page_votes' %}">
+				<i class="mdi mdi-checkbox-marked-circle-outline menu-icon"></i>
+				<span class="menu-title">Votes</span>
+			</a>
+		</li>
+		<li class="nav-item menu-charts">
+			<a class="nav-link" href="{% url 'charts_index' %}">
+				<i class="mdi mdi-chart-areaspline menu-icon"></i>
+				<span class="menu-title">Charts</span>
+			</a>
+		</li>
+
+		<li class="nav-item menu-charts">
+			<a class="nav-link" href="{% url 'page_wallet' %}">
+				<i class="mdi mdi-wallet menu-icon"></i>
+				<span class="menu-title">Wallet Settings</span>
+			</a>
+		</li>
+	</ul>
+</nav>

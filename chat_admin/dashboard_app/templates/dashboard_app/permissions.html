@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Permissions{% endblock title %}
+
+{% block header %}
+	{% include "dashboard_app/layouts/top_bar.html" %}
+{% endblock header %}
+
+{% block sidebar %}
+	{% include "dashboard_app/layouts/sidebar_left.html" %}
+{% endblock sidebar %}
+
+{% block content %}
+	<div class="main-panel">
+		<div class="content-wrapper">
+			<div class="row">
+				<div class="col-md-12 grid-margin">
+					<div class="d-flex justify-content-between flex-wrap">
+						
+						<div class="d-flex align-items-end flex-wrap">
+							<div class="mr-md-3 mr-xl-5">
+								<h2>User Permissions</h2>
+							</div>
+						</div>
+						<div class="d-flex justify-content-between align-items-end flex-wrap">
+							<a href="{% url 'user_permission_create' %}" class="btn btn-primary mt-2 mt-xl-0 new-user-top">Create New</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12 grid-margin stretch-card">
+					<div class="card">
+						<div class="card-body dashboard-tabs p-0">
+
+							<div class="d-flex flex-wrap justify-content-xl-between">
+								<div class="d-none d-xl-flex border-md-right flex-grow-1 align-items-center justify-content-center p-3 item">
+									<div class="table-responsive">
+										<table class="table table-striped table-hover">
+											<thead>
+												<tr>
+													<th>#</th>
+													<th>Permission</th>
+													<th>Created By</th>
+													<th>Date Created</th>
+												</tr>
+											</thead>
+											<tbody>
+												{% for permission in permissions %}
+													<tr class="row-permission-{{ permission }}">
+														<td>-></td>
+														<td>{{ permission.name|title }}</td>
+														<td>{{ permission.created_by|title }}</td>
+														<td>{{ permission.date_created }}</td>
+													</tr>
+												{% endfor %}
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+{% endblock content %}
