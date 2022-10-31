@@ -1,2 +1,2 @@
 # api-afrometa
-admin dashboard and database interation apis for afrometa
+admin dashboard and database interaction apis for afrometa
