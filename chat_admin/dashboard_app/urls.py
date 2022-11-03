@@ -1,6 +1,8 @@
 from django.urls import path, include
 
 from . import views
+from .DBOperations import DBOperations
+from .LoginSettings import LoginSettings
 
 urlpatterns = [
     path('', views.index, name='index'),
@@ -19,5 +21,12 @@ urlpatterns = [
     path('page/votes/', views.pageVotes, name='page_votes'),
     path('charts/', include('charts.urls')),
     path('wallet/', views.wallet, name='page_wallet'),
+
+    path('dbops/', DBOperations.index, name='db_operations_index'),
+    path('dbops/purge/', DBOperations.purge, name='db_operations_action'),
+
+    path('login/settings/', LoginSettings.index, name='login_settings_index'),
+    path('login/settings/create/', LoginSettings.create, name='login_settings_create'),
+    path('login/settings/<slug:id>/update/', LoginSettings.settingUpdate, name='login_setting_update'),
 
 ]

@@ -19,4 +19,5 @@ urlpatterns = [
     path('wallet-status/', views.walletStatus, name='get_or_post_wallet_status'),
     path('wallet-whitelist-add/', views.walletAddWhitelist, name='add_whitelist_to_wallet'),
     path('wallet-whitelist-remove/', views.walletRemoveWhitelist, name='remove_whitelist_to_wallet'),
+    path('sign/options/', views.getSignOptions, name='get_sign_in_up_options'),
 ]

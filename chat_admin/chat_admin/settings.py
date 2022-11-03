@@ -56,7 +56,8 @@ INSTALLED_APPS = [
     'rooms.apps.RoomsConfig',
     'votes.apps.VotesConfig',
     'charts.apps.ChartsConfig',
-    'wallet.apps.WalletConfig'
+    'wallet.apps.WalletConfig',
+    'login_settings.apps.LoginSettingsConfig'
 ]
 
 MIDDLEWARE = [

@@ -15,9 +15,9 @@
 			</a>
 		</li>
 		<li class="nav-item menu-permissions">
-			<a class="nav-link" href="{% url 'user_permissions' %}">
-				<i class="mdi mdi-lock-open menu-icon"></i>
-				<span class="menu-title">Permissions</span>
+			<a class="nav-link" href="{% url 'db_operations_index' %}">
+				<i class="mdi mdi-database menu-icon"></i>
+				<span class="menu-title">DB Operations</span>
 			</a>
 		</li>
 		<li class="nav-item menu-votes">
@@ -37,6 +37,13 @@
 			<a class="nav-link" href="{% url 'page_wallet' %}">
 				<i class="mdi mdi-wallet menu-icon"></i>
 				<span class="menu-title">Wallet Settings</span>
+			</a>
+		</li>
+
+		<li class="nav-item menu-permissions">
+			<a class="nav-link" href="{% url 'login_settings_index' %}">
+				<i class="mdi mdi-login menu-icon"></i>
+				<span class="menu-title">Login Settings</span>
 			</a>
 		</li>
 	</ul>

@@ -12,6 +12,7 @@ from django.contrib.auth.models import User
 from rooms.models import Room, RoomUsers, RoomChat
 from votes.models import SiteVote
 from wallet.models import UserWallet, Wallet
+from login_settings.models import LoginSettings
 from .helpers import Helper
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -632,4 +633,19 @@ def walletRemoveWhitelist(request):
 				data['message'] = str('There is nothing to show.')
 		else:
 			data['message'] = str('There is nothing to show.')
+	return JsonResponse(data, content_type='application/json', status=res_status)
+
+
+""" Get Sign in/up Options """
+def getSignOptions(request):
+	data = { 'status': False }
+	res_status = 417
+
+	if request.method == 'GET':
+		res_status = 200
+
+		options = LoginSettings.objects.filter(status=True).values('id', 'name')
+		data['status'] = True
+		data['message'] = str('Request Completed.')
+		data['options'] = list(options)
 	return JsonResponse(data, content_type='application/json', status=res_status)

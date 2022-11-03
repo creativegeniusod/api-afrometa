@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Database Operations{% endblock title %}
+
+{% block header %}
+	{% include "dashboard_app/layouts/top_bar.html" %}
+{% endblock header %}
+
+{% block sidebar %}
+	{% include "dashboard_app/layouts/sidebar_left.html" %}
+{% endblock sidebar %}
+
+{% block content %}
+	<div class="main-panel">
+		<div class="content-wrapper">
+
+			<!-- content top row -->
+			<div class="row">
+				<div class="col-md-12 grid-margin">
+					<div class="d-flex justify-content-between flex-wrap">
+						<div class="d-flex align-items-end flex-wrap">
+							<div class="mr-md-3 mr-xl-5">
+								<h2>Login Settings</h2>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Menu -->
+			<div class="row">
+				<div class="col-md-12 grid-margin stretch-card">
+					<div class="card">
+						<div class="card-body dashboard-tabs p-0">
+							<ul class="nav nav-tabs px-4" role="tablist">
+								<li class="nav-item">
+									<a class="nav-link active" id="login-options-tab" data-toggle="tab" href="#login-options" role="tab" aria-controls="login-options" aria-selected="true">Login Options</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" id="login-option-create-tab" data-toggle="tab" href="#login-option-create" role="tab" aria-controls="login-option-create" aria-selected="true">Create New</a>
+								</li>
+							</ul>
+
+							<div class="tab-content py-0 px-0">
+								{% csrf_token %}
+								<div class="tab-pane fade show active" id="login-options" role="tabpanel" aria-labelledby="login-options-tab">
+									<div class="d-none d-xl-flex border-md-right flex-grow-1 align-items-left justify-content-left p-3 item">
+										<div class="table-responsive">
+											<table id="purge-list" class="table table-hover table-striped">
+												<thead>
+													<tr>
+														<th>Login option</th>
+														<th>Status</th>
+														<th>Created</th>
+														<th>Action</th>
+													</tr>
+												</thead>
+												<tbody>
+													{% if login_settings %}
+														{% for setting in login_settings %}
+															<tr class="row-setting-{{ setting.name }}">
+																<td>{{ setting.name }}</td>
+																<td>{{ setting.status }}</td>
+																<td>{{ setting.date_created }}</td>
+																<td>
+																	<a href="{% url 'login_setting_update' id=setting.id %}" class="btn btn-info mt-3 setting-update">Edit</a>
+																</td>
+															</tr>
+														{% endfor %}
+													{% endif %}
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+
+								<div class="tab-pane fade" id="login-option-create" role="tabpanel" aria-labelledby="login-option-create-tab">
+									<div class="d-none d-xl-flex border-md-right flex-grow-1 align-items-left justify-content-left p-3 item">
+										<div class="auth-form-light text-left py-5 px-4 px-sm-5">
+											<form action="{% url 'login_settings_create' %}" class="pt-3" method="POST">
+												{% csrf_token %}
+
+												<div class="form-group">
+													<label class="text-muted"><strong>New Option Name:</strong>
+														<input type="text" class="form-option-name form-control" name="new-option" placeholder="Option Name" autocomplete="off" />
+													</label>
+												</div>
+
+												<div class="mt-3">
+													<button type="submit" class="btn btn-primary btn-sm font-weight-medium save-new-option">Save New Option</button>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!--  -->
+		</div>
+	</div>
+{% endblock content %}

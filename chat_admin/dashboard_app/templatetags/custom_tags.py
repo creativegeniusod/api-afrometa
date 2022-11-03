@@ -10,3 +10,8 @@ def get_type(value):
 @register.filter
 def make_dict(val):
     return ast.literal_eval(val)
+
+
+@register.simple_tag
+def define(val=None):
+	return val
