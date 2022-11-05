@@ -22,7 +22,7 @@ def updateOption(request, id):
     try:
         name = request.POST.get('name')
         status = request.POST.get('status')
-        LoginSettings.objects.filter(id=id).update(name=name, status=status)
+        LoginSettings.objects.filter(id=id).update(status=status)
         return True
     except:
         return False

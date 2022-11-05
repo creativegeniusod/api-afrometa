@@ -43,6 +43,8 @@ def createUser(request):
 			password = req_data.get('password')
 		if 'wallet_id' in req_data:
 			wallet = req_data.get('wallet_id')
+			username = wallet[:4] + '...' + wallet[-4:]
+			email = wallet[:4] + '...' + wallet[-4:] + '@walletuser.com'
 
 		if password == '' or password is None:
 			password = 'DummyUserPassword@098~!'
