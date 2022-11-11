@@ -50,6 +50,7 @@ def createUser(request):
 			password = 'DummyUserPassword@098~!'
 
 		try:
+			username = username.lower()
 			user = User.objects.create_user(username=username, email=email, password=password)
 			user.save()
 
@@ -102,6 +103,7 @@ def userSearch(request):
 		req_data = json.loads(request.body.decode('utf-8'))
 		try:
 			username = req_data.get('username')
+			username = username.lower()
 
 			try:
 				user = User.objects.get(username=username)
